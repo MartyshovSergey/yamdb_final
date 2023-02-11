@@ -8,7 +8,7 @@
 
 1. Клонировать репозиторий:
 ```
-git clone git@github.com:MartyshovSergey/infra_sp2.git
+git clone git@github.com:MartyshovSergey/yamdb_final.git
 ```
 
 2. В корневой директории создать файл .env:
