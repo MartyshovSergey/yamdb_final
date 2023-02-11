@@ -10,17 +10,13 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
+from reviews.models import Category, CustomUser, Genre, Review, Title
 
 from api_yamdb.settings import DEFAULT_FROM_EMAIL
-from reviews.models import (Category,
-                            Genre,
-                            Review,
-                            Title,
-                            CustomUser)
+
 from .filters import TitleFilter
 from .mixins import ModelMixinSet
-from .permissions import (IsAdminOrAuthorOrModerator,
-                          IsAdminOrStaff,
+from .permissions import (IsAdminOrAuthorOrModerator, IsAdminOrStaff,
                           IsAdminOrUserOrReadOnly)
 from .serializers import (CategorySerializer, CommentSerializer,
                           GenreSerializer, GetTokenSerializer,

@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from api_yamdb.settings import USER_CHARFIELD_LENGTH, USER_EMAIL_LENGTH
+
 from .validators import validate_username
 
 ADMIN = 'admin'

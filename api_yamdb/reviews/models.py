@@ -1,8 +1,9 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from user.models import CustomUser
 
 from api_yamdb.settings import REVIEW_CHARFIELD_LENGTH
-from user.models import CustomUser
+
 from .validators import year_valid
 
 
