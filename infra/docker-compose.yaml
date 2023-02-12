@@ -29,6 +29,6 @@ services:
       - web
 
 volumes:
-  static_value:
-  media_value:
-  db_value:
+  yamdb_final_static:
+  yamdb_final_media:
+  yamdb_final_db:
