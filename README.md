@@ -1,5 +1,6 @@
 # API_YAMDB
 ![Yamdb Workflow Status](https://github.com/martyshovsergey/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg?branch=master&event=push)
+http://158.160.18.84
 Проект для публикаций отзывов пользователей на произведения. Категории произведений: «Книги», «Фильмы», «Музыка». Список категорий расширяемый.
 
 Читатели оставляют к произведениям текстовые отзывы (Review) и выставляют рейтинг (оценку в диапазоне от 1 до 10).
