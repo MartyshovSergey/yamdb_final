@@ -1,43 +1,78 @@
 # API_YAMDB
 ![Yamdb Workflow Status](https://github.com/martyshovsergey/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg?branch=master&event=push)
-http://158.160.18.84
-Проект для публикаций отзывов пользователей на произведения. Категории произведений: «Книги», «Фильмы», «Музыка». Список категорий расширяемый.
 
-Читатели оставляют к произведениям текстовые отзывы (Review) и выставляют рейтинг (оценку в диапазоне от 1 до 10).
+### Описание:
+«API YAMDB» - Проект YaMDb собирает отзывы пользователей на произведения. 
+Произведения делятся на категориии, такие как "Фильмы", "Музыка", "Книги". Сами произведения здесь не хранятся.
 
-## Запуск проекта
+Произведениям можно присвоить жанр, например для произведения из категории "Музыка" может быть присвоен жанр "Рок".
+Добавить произведения может только администратор. Пользователи могут оставлять к произведениям отзывы, 
+ставить им оценку от 1 до 10, из оценок формируется рейтинг - среднее из всех оценок, оставленных произведению.
 
-1. Клонировать репозиторий:
+Добавить отзыв, комментарий или поставить оценку разрешается только аутентифицированным пользователям.
+На одно произведение пользователь может оставить только один отзыв.
+
+### Технологии:
+
+[Python 3.7](https://docs.python.org/3.7/whatsnew/3.7.html)
+
+[Django 2.2.16](https://docs.djangoproject.com/en/4.1/releases/2.2.16/)
+
+[DjangoRestFramework 3.12.4](https://www.django-rest-framework.org/community/release-notes/)
+
+[gunicorn 20.0.4](https://docs.gunicorn.org/en/stable/)
+
+[Docker](https://docs.docker.com/)
+
+Для проекта настроен:
+
+- автоматический запуск тестов на сервисе GitHub Actions.
+
+- обновление образов на DockerHub
+
+- автоматический деплой на боевой сервер при пуше в главную ветку main.
+
+## Примеры запросов к API
+###  Регистрация пользователя
 ```
-git clone git@github.com:MartyshovSergey/yamdb_final.git
+POST /api/v1/auth/signup/
+{
+  "email": "string",
+  "username": "string"
+}
+```
+###  Получение JWT-токена:
+```
+POST /api/v1/auth/token/
+{
+  "username": "string",
+  "confirmation_code": "string"
+}
+```
+###  Добавление категории:
+```
+POST /api/v1/categories/
+{
+  "name": "string",
+  "slug": "string"
+}
+```
+###  Удаление категории:
+```
+DELETE /api/v1/categories/{slug}/
+```
+###  Добавление произведения:
+```
+POST /api/v1/titles/
+{
+  "name": "string",
+  "year": 0,
+  "description": "string",
+  "genre": [
+    "string"
+  ],
+  "category": "string"
+}
 ```
 
-2. В корневой директории создать файл .env:
-```
-DB_ENGINE=django.db.backends.postgresql
-DB_NAME=postgres
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=postgres
-DB_HOST=db
-DB_PORT=5432
-```
-
-3. Запустить docker-compose
-```
-docker-compose up
-```
-
-4. В WEB контейнере выполнить миграции:
-```
-docker-compose exec web python manage.py migrate
-```
-
-5. Создать суперпользователя:
-```
-docker-compose exec web python manage.py createsuperuser
-```
-
-6. Собрать статику:
-```
-docker-compose exec web python manage.py collectstatic --no-input
-```
+### Полная документация по эндпоинту /redoc/
